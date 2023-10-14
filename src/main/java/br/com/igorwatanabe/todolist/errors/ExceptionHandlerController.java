@@ -11,7 +11,7 @@ public class ExceptionHandlerController { // customiza o erro, toda exececao que
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> handlerHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMostSpecificCause().getMessage()); // o most pega apenas o valor do objeto
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMostSpecificCause().getMessage()); // o most pega apenas o valor do objeto.
     }
     
 }
