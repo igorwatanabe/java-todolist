@@ -18,14 +18,14 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FilterTaskAuth extends OncePerRequestFilter {
 
     @Autowired
-    private IUserRepository userRepository;
+    private IUserRepository userRepository; 
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
                 var servletPath = request.getServletPath();
-                if(servletPath.startsWith("/tasks")) { //era .equals, startWith serve para rotas com parametros {id}
+                if(servletPath.startsWith("/tasks/")) { //era .equals, startWith serve para rotas com parametros {id}
                     //Pegar a autorizacao (usuario e senha)
                     var authorization = request.getHeader("Authorization");
 
@@ -54,9 +54,9 @@ public class FilterTaskAuth extends OncePerRequestFilter {
                             response.sendError(401);
                         } 
                     } 
+                } else {
+                    filterChain.doFilter(request, response);
                 }
-        // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'doFilterInternal'");
     }
 
     
