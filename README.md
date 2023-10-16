@@ -1,4 +1,4 @@
-# Todolist - Java e Spring 
+# Todolist - Java e Spring Boot
 
 #### Sobre 📄
 
